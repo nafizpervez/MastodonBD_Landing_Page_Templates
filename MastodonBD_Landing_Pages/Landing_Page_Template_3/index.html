@@ -1,0 +1,1478 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>Mastodon BD</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<link href="https://fonts.googleapis.com/css?family=Rubik:300,400,500,700,900" rel="stylesheet">
+
+	<link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
+	<link rel="stylesheet" href="css/animate.css">
+
+	<link rel="stylesheet" href="css/owl.carousel.min.css">
+	<link rel="stylesheet" href="css/owl.theme.default.min.css">
+	<link rel="stylesheet" href="css/magnific-popup.css">
+
+	<link rel="stylesheet" href="css/aos.css">
+
+	<link rel="stylesheet" href="css/ionicons.min.css">
+
+	<link rel="stylesheet" href="css/flaticon.css">
+	<link rel="stylesheet" href="css/icomoon.css">
+	<link rel="stylesheet" href="fonts/fontawesome-free-5.9.0-web/css/all.css">
+	<link rel="stylesheet" href="css/style.css">
+
+	<!--Favicon-->
+	<link rel="apple-touch-icon" sizes="180x180" href="./images/logo/favicon/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="./images/logo/favicon/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="./images/logo/favicon/favicon-16x16.png">
+	<link rel="manifest" href="./images/logo/favicon/site.webmanifest">
+
+
+	<link href="./css/twentytwenty.css" rel="stylesheet" type="text/css" />
+
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+
+	<!-- ScrollTop button Css -->
+	<style>
+		html {
+			scroll-behavior: smooth;
+		}
+
+		#scrollBtn {
+			display: none;
+			position: fixed;
+			bottom: 20px;
+			right: 30px;
+			z-index: 99;
+			font-size: 18px;
+			border: none;
+			outline: none;
+			background-color: rgb(255, 0, 0);
+			color: white;
+			cursor: pointer;
+			padding: 15px;
+			border-radius: 4px;
+		}
+
+		#scrollBtn:hover {
+			background-color: #555;
+		}
+	</style>
+
+	<!--Codepen.io NVWMEM CSS-->
+	<style>
+				:root{
+			--background-dark: #2d3548;
+			--text-light: rgba(255,255,255,0.6);
+			--text-lighter: rgba(255,255,255,0.9);
+			--spacing-s: 8px;
+			--spacing-m: 16px;
+			--spacing-l: 24px;
+			--spacing-xl: 32px;
+			--spacing-xxl: 64px;
+			--width-container: 1200px;
+			}
+
+			*{
+			border: 0;
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+			}
+
+			html{
+			height: 100%;
+			font-family: 'Montserrat', sans-serif;
+			font-size: 14px;
+			}
+
+			body{
+			height: 100%;
+			
+			}
+
+			.hero-section{
+			align-items: flex-start;
+			background-image: linear-gradient(15deg, #0f4667 0%, #2a6973 150%);
+			display: flex;
+			min-height: 100%;
+			position: relative; 
+			justify-content: center;
+			text-align: center;
+			padding: var(--spacing-xxl) var(--spacing-l);
+			}
+
+			.card-grid{
+			display: grid;
+			grid-template-columns: repeat(1, 1fr);
+			grid-column-gap: var(--spacing-l);
+			grid-row-gap: var(--spacing-l);
+			max-width: var(--width-container);
+			width: 100%;
+			}
+
+			@media(min-width: 540px){
+			.card-grid{
+				grid-template-columns: repeat(2, 1fr); 
+			}
+			}
+
+			@media(min-width: 960px){
+			.card-grid{
+				grid-template-columns: repeat(4, 1fr); 
+			}
+			}
+
+			.card{
+			list-style: none;
+			position: relative;
+			}
+
+			.card:before{
+			content: '';
+			display: block;
+			padding-bottom: 150%;
+			width: 100%;
+			}
+
+			.card__background{
+			background-size: cover;
+			background-position: center;
+			border-radius: var(--spacing-l);
+			bottom: 0;
+			filter: brightness(0.75) saturate(1.2) contrast(0.85);
+			left: 0;
+			position: absolute;
+			right: 0;
+			top: 0;
+			transform-origin: center;
+			transform: scale(1) translateZ(0);
+			transition: 
+				filter 200ms linear,
+				transform 200ms linear;
+			}
+
+			.card:hover .card__background{
+			transform: scale(1.05) translateZ(0);
+			}
+
+			.card-grid:hover > .card:not(:hover) .card__background{
+			filter: brightness(0.5) saturate(0) contrast(1.2) blur(15px);
+			}
+
+			.card__content{
+			left: 0;
+			padding: var(--spacing-l);
+			position: absolute;
+			top: 0;
+			}
+
+			.card__category{
+			color: var(--text-light);
+			font-size: 0.9rem;
+			margin-bottom: var(--spacing-s);
+			text-transform: uppercase;
+			}
+
+			.card__heading{
+			color: var(--text-lighter);
+			font-size: 1.9rem;
+			text-shadow: 2px 2px 20px rgba(0,0,0,0.2);
+			line-height: 1.4;
+			word-spacing: 100vw;
+			}
+	</style>
+<!--Codepen.io NVWMEM CSS Ends-->
+
+
+<!--Codepen.io
+	<link rel="stylesheet" href="./css/style2.sass">-->
+
+	<style>
+			.preloader {
+			position: fixed;
+			top: 0;
+			left: 0;
+			z-index: 999999999;
+			width: 100%;
+			height: 100%;
+			background-color: rgb(255, 255, 255);
+			overflow: hidden;
+			}
+			.preloader-inner {
+		
+			align-items: center;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			-webkit-transform: translate(-50%,-50%);
+			-moz-transform: translate(-50%,-50%);
+			transform: translate(-50%,-50%);
+			padding: 0;
+			margin: 0;
+			height: 100vh;
+			width: auto;
+			display:flex;
+			align-items: center;
+			justify-content: center;
+			}
+			
+			@keyframes preloader-fx {
+			0% {transform: scale(0, 0); opacity:0.5;}
+			100% {transform: scale(1, 1); opacity:0;}
+			}
+			@-webkit-keyframes preloader-fx {
+			0% {-webkit-transform: scale(0, 0); opacity:0.5;}
+			100% {-webkit-transform: scale(1, 1); opacity:0;}
+			}
+
+			.preloader-icon {
+				width: 100px;
+				height: 100px;
+				display: inline-block;
+				padding: 0px;
+				}
+				.preloader-icon span {
+				position: absolute;
+				display: inline-block;
+				width: 100px;
+				height: 100px;
+				border-radius: 100%;
+				background:#0f7414;
+				-webkit-animation: preloader-fx 1.6s linear infinite;
+				animation: preloader-fx 1.6s linear infinite;
+				}
+				.preloader-icon span:last-child {
+				animation-delay: -0.8s;
+				-webkit-animation-delay: -0.8s;
+				}
+				@keyframes preloader-fx {
+				0% {transform: scale(0, 0); opacity:0.5;}
+				100% {transform: scale(1, 1); opacity:0;}
+				}
+				@-webkit-keyframes preloader-fx {
+				0% {-webkit-transform: scale(0, 0); opacity:0.5;}
+				100% {-webkit-transform: scale(1, 1); opacity:0;}
+				}
+
+			.loader{
+				-webkit-perspective:700px;
+				perspective: 700px;
+			}
+
+			.loader>span{
+				font-size: 130px;
+				font-family: "franklin gothic medium",sans-serif;
+				display: inline-block;
+				animation:flip 2.6s infinite linear;
+				transform-origin:0 70%;
+				transform-style:preserve-3d;
+				-webkit-transform-style:preserve-3d;
+			}
+
+			@keyframes flip{
+				35%{
+					transform: rotateX(360deg);
+				}
+				100%{
+					transform: rotatex(360deg);
+				}
+			}
+
+
+			.loader>span:nth-child(even){
+				color:white;
+
+			}
+
+			.loader>span:nth-child(2){
+				animation-delay: 0.3s;
+			}
+
+			.loader>span:nth-child(3){
+				animation-delay: 0.6s;
+			}
+
+			.loader>span:nth-child(4){
+				animation-delay: 0.9s;
+			}
+
+			.loader>span:nth-child(5){
+				animation-delay: 1.2s;
+			}
+
+			.loader>span:nth-child(6){
+				animation-delay: 1.5s
+			}
+
+			.loader>span:nth-child(7){
+				animation-delay: 1.8s
+			}
+	</style>
+	<style>
+			.media:hover{
+				transform: scale(1.05);
+			box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
+			}
+	</style>
+
+</head>
+
+<body>
+	<!-- Preloader -->
+	<div class="preloader">
+		<div class="preloader-inner">
+			<div class="preloader-icon">
+				<span></span>
+				<span></span>
+			</div>
+		</div>
+	</div>
+<!-- End Preloader -->
+
+	<!-- 
+	<div class="preloader">
+		<div class="preloader-inner col-6 col-md-12 col-lg-12">
+			<div class="loader text-center">
+				<span>G</span>
+				<span>E</span>
+				<span>T</span>
+				<br>
+				<span>M</span>
+				<span>A</span>
+				<span>S</span>
+				<span>T</span>
+				<span>A</span>
+				<span>S</span>
+				<span>H</span>
+				<span>E</span>
+				<span>D</span>
+			</div>
+		</div>
+	</div>
+	End Preloader -->	
+
+
+	<!-- ScrollBtn -->
+	<button onclick="topFunction()" id="scrollBtn" title="Go to top">Top</button>
+
+
+
+
+	<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+		<div class="container">
+			<a class="navbar-brand" href="index.html"><span>Mastodon LTD.</span></a>
+			<button class="navbar-toggler js-fh5co-nav-toggle fh5co-nav-toggle" type="button" data-toggle="collapse"
+				data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="oi oi-menu"></span>
+			</button>
+
+			<div class="collapse navbar-collapse" id="ftco-nav">
+				<ul class="navbar-nav nav ml-auto">
+					<li class="nav-item"><a href="#" class="nav-link" data-nav-section="home"><span>Home</span></a></li>
+					<li class="nav-item"><a href="#" class="nav-link" data-nav-section="ourjourney"><span>Our Journey</span></a>
+					</li>
+					<li class="nav-item"><a href="#" class="nav-link"
+							data-nav-section="services"><span>Services</span></a></li>
+					<li class="nav-item"><a href="#" class="nav-link"
+							data-nav-section="ourworks"><span>Our Works</span></a></li>
+					<li class="nav-item"><a href="#" class="nav-link"
+							data-nav-section="contact"><span>Contact Us</span></a></li>
+					<li class="nav-item"><a href="#" class="btn btn-lg btn-link" id="#" ><span>Log In</span></a></li>
+
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+
+
+
+
+
+	<section class="hero-wrap js-fullheight text-center" style="background-color: black;  " data-section="home">
+		<div class="overlay" id="myVideo">
+			<video autoplay muted loop id="myVideo">
+				<source src="./assets/videos/TheBG.mp4" type="video/mp4">
+			  </video>
+		</div>
+
+		<div class="container text-center">
+			<div class="row no-gutters slider-text js-fullheight align-items-center justify-content-start"
+				data-scrollax-parent="true">
+				<div class="col-md-12 ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
+					<p class="d-flex align-items -center"
+						data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">
+						<a href="#" class="col-md-12">
+							<span class="btn btn-lg btn-outline-success aos-top">Book now!</span>
+						</a>
+					</p>
+
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="ftco-section ftco-services ftco-no-pt">
+		<div class="container">
+			
+			<div class="row services-section">
+				
+				<div class="col-6 col-sm-3 d-flex align-self-stretch ftco-animate">
+					<div class="media block-6 services text-center d-block">
+						<div class="icon"><i class="fas f043 fa-tint fa-6x"
+								style="color: rgba(42, 103, 182, 0.823);"></i></span></div>
+						<div class="media-body">
+							<h3 class="heading mb-3">Mastodon WASH</h3>
+							<p>A small river named Duden flows by their place and supplies it with the necessary
+								regelialia. It is a paradisematic country, in which roasted parts of sentences fly into
+								your mouth.</p>
+							<p><a href="#" class="btn btn-link">Details</a></p>
+						</div>
+					</div>
+				</div>
+				<br>
+				
+				<div class="col-6 col-sm-3 d-flex align-self-stretch ftco-animate">
+					<div class="media block-6 services text-center d-block">
+						<div class="icon"><i class="fas f290 fa-shopping-bag fa-6x" style="color: salmon;"></i></span>
+						</div>
+						<div class="media-body">
+							<h3 class="heading mb-3">Masta Mart</h3>
+							<p>A small river named Duden flows by their place and supplies it with the necessary
+								regelialia. It is a paradisematic country, in which roasted parts of sentences fly into
+								your mouth.</p>
+							<p><a href="#" class="btn btn-link">Details</a></p>
+						</div>
+					</div>
+				</div>
+				
+				<div class="col-6 col-sm-3 d-flex align-self-stretch ftco-animate">
+					<div class="media block-6 services text-center d-block">
+						<div class="icon"><i class="fas f494 fa-warehouse fa-6x" style="color: springgreen;"></i></span>
+						</div>
+						<div class="media-body">
+							<h3 class="heading mb-3">M GARAGE</h3>
+							<p>A small river named Duden flows by their place and supplies it with the necessary
+								regelialia. It is a paradisematic country, in which roasted parts of sentences fly into
+								your mouth.</p>
+							<p><a href="#" class="btn btn-link">Details</a></p>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-6 col-sm-3 d-flex align-self-stretch ftco-animate">
+					<div class="media block-6 services text-center d-block">
+						<div class="icon"><i class="fas f49e fa-box-open fa-6x" style="color: brown;"></i></div>
+						<div class="media-body">
+							<h3 class="heading mb-3">Buy & Sell</h3>
+							<p>A small river named Duden flows by their place and supplies it with the necessary
+								regelialia. It is a paradisematic country, in which roasted parts of sentences fly into
+								your mouth.</p>
+							<p><a href="#" class="btn btn-link">Details</a></p>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</section>
+
+
+	<section class="ftco-counter img ftco-section ftco-no-pt ftco-no-pb" id="section-counter" data-section="ourjourney">
+		<div class="container">
+			<div class="row d-flex">
+
+				<div class="col-md-12 col-lg-12 pl-lg-5 py-5">
+					<div class="row justify-content-start pb-3">
+						<div class="col-md-12 heading-section ftco-animate">
+
+
+
+
+							<span class="subheading">Our Journey</span>
+							<!-- <h2 class="mb-4">Since we started work in 2015</h2> -->
+
+							<style>
+								#more {
+									display: none;
+								}
+							</style>
+
+							<p>On December 2015, Mastodon Ltd. (previously known as Mastodon Wash) started its journey
+								with a waterless home car
+								wash service idea.
+								It would export the products from Italy and serve it to its customers through its
+								trained workforce.
+								Soon after a yearlong period of trial and error with the waterless car wash technique,
+								Mastodon Wash diverted
+								its services into
+
+								<span id="dots">...</span><span id="more">regular car wash service on 2016 and only
+									focused on recreating the
+									Auto Detailing Industry in Bangladesh.
+									Moving on with our ideas, while acquiring more customers, we have reached a
+									milestone of top 100 business
+									ideas at
+									Startup Istanbul in 2017 and top 10 business ideas at Microsoft Young Bangla Summit
+									in 2018 respectively. By
+									2019,
+									the company has validated both the products and its customers and it was ready to be
+									commercially Launched
+									on 30th August 2019
+									with our first commercial home car wash service at capitals Bashundhara Residential
+									Area.<br>
+									August 30th 2019, our journey as a company begins. On our very first year, by the
+									end of Fiscal Year 2020, we
+									have served a little less than 500 orders and have provided full fledged home car
+									services during the
+									Pandemic-COVID-19.
+									In the mean time we have received with the Bangabandhu Innovation Grant of BDT 1
+									Million by the Government of
+									Bangladesh and won multiple native and global recognitions in respective areas of
+									the industry.
+									Slowly but surely, we have survived another year of the scare some pandemic and by
+									the end of FY 2021 we have
+									served an approximate of 1800+ home car maintenance services and counting.</span>
+							</p>
+
+							<a onclick="myFunction()" class="subheading" id="myBtn">Read more</a>
+							<br>
+							<p>On 2021, Mastodon Wash became Mastodon Ltd. With the change, the company has since added
+								multiple utilities to
+								its services, such as; car wash, car repair, car buy & sell and a dedicated marketplace
+								for authentic car part
+								and utilities. With a mission of recreating the Auto Detailing Industry in Bangladesh
+								and making car maintenance
+								easier than anything we are operating in the Bangladeshi market since 2015, or 2019
+								commercially. </p>
+
+
+							<script>
+								function myFunction() {
+									var dots = document.getElementById("dots");
+									var moreText = document.getElementById("more");
+									var btnText = document.getElementById("myBtn");
+
+									if (dots.style.display === "none") {
+										dots.style.display = "inline";
+										btnText.innerHTML = "Read more";
+										moreText.style.display = "none";
+									} else {
+										dots.style.display = "none";
+										btnText.innerHTML = "Read less";
+										moreText.style.display = "inline";
+									}
+								}
+							</script>
+
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-6 col-md-6 col-lg-3 justify-content-center counter-wrap ftco-animate d-flex">
+							<div class="block-18 text-center p-4 mb-4 align-self-stretch d-flex">
+								<div class="text">
+									<strong class="number" data-number="3">0</strong>
+									<span>Years of experience</span>
+								</div>
+							</div>
+						</div>
+						<div class="col-6 col-md-6 col-lg-3 justify-content-center counter-wrap ftco-animate d-flex">
+							<div class="block-18 text-center py-4 px-3 mb-4 align-self-stretch d-flex">
+								<div class="text">
+									<strong class="number" data-number="325">0</strong>
+									<span>Detailing Done</span>
+								</div>
+							</div>
+						</div>
+						<div class="col-6 col-md-6 col-lg-3 justify-content-center counter-wrap ftco-animate d-flex">
+							<div class="block-18 text-center py-4 px-3 mb-4 align-self-stretch d-flex">
+								<div class="text">
+									<strong class="number" data-number="15">0</strong>
+									<span>Our Team</span>
+								</div>
+							</div>
+						</div>
+						<div class="col-6 col-md-6 col-lg-3 justify-content-center counter-wrap ftco-animate d-flex">
+							<div class="block-18 text-center py-4 px-3 mb-4 align-self-stretch d-flex">
+								<div class="text">
+									<strong class="number" data-number="400">0</strong>
+									<span>Happy Customers</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+
+	<div class="card-body" style="align-items: center; justify-content: center;">
+		<div class="col-6 col-md-12" style="display: block;
+			margin-left: auto;
+			margin-right: auto;
+			width: 50%;">
+			<div class="twentytwenty-container">
+				<img src="./images/container/PngItem_1961211.png" />
+				<img src="./images/container/PngItem_537730.png" />
+			</div>
+		</div>
+
+	</div>
+	</div>
+
+
+	<br><br>
+
+	<section class="ftco-counter img ftco-section ftco-no-pt ftco-no-pb" id="section-counter" data-section="services">
+		<div class="container-fluid px-md-5">
+			<div class="row justify-content-center pb-5">
+				<div class="col-md-12 heading-section text-center ftco-animate">
+					<span class="subheading">Services</span>
+
+					<h2 class="mb-4">Our Services</h2>
+					<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia</p>
+				</div>
+			</div>
+			<!--codepen.io NVWMEM-->
+			<div class="container text-center">
+				<div class="col-12 col-md-12 align-content-center">
+					<div class="card-grid">
+						<a class="card" href="#">
+						<div class="card__background" style="background-image: url(https://images.unsplash.com/photo-1557177324-56c542165309?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80)"></div>
+						<div class="card__content">
+							<p class="card__category">WASH</p>
+							<h3 class="card__heading">Mastodon Wash</h3>
+						</div>
+						</a>
+						<a class="card" style="text-align: center;" href="#">
+						<div class="card__background" style="background-image: url(https://images.unsplash.com/photo-1557187666-4fd70cf76254?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60)"></div>
+						<div class="card__content">
+							<p class="card__category">Mart</p>
+							<h3 class="card__heading">Masta Mart</h3>
+						</div>
+						</a>
+						<a class="card" href="#">
+						<div class="card__background" style="background-image: url(https://images.unsplash.com/photo-1556680262-9990363a3e6d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60)"></div>
+						<div class="card__content">
+							<p class="card__category">Garage</p>
+							<h3 class="card__heading">Mastodon Garage</h3>
+						</div>
+						</li>
+						<a class="card" href="#">
+						<div class="card__background" style="background-image: url(https://images.unsplash.com/photo-1557004396-66e4174d7bf6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60)"></div>
+						<div class="card__content">
+							<p class="card__category">Buy & Sell</p>
+							<h3 class="card__heading">Mastodon Buy&Sell</i></h3>
+						</div>
+						</a>
+					<div>
+				</div>	
+			</div>
+
+
+				<!-- <div class="row row-cols-1 row-cols-md-2">
+					<div class="col mb-4">
+						<div class="card">
+							<img src="./images/porsche.jpg" class="card-img-top" alt="...">
+							<div class="card-body">
+								<h5 class="card-title">WASH</h5>
+								<p class="card-text">This is a longer card with supporting text below as a natural lead-in
+									to additional content. This content is a little bit longer.</p>
+							</div>
+						</div>
+					</div>
+					<div class="col mb-4">
+						<div class="card">
+							<img src="./images/porsche.jpg" class="card-img-top" alt="...">
+							<div class="card-body">
+								<h5 class="card-title">Mart</h5>
+								<p class="card-text">This is a longer card with supporting text below as a natural lead-in
+									to additional content. This content is a little bit longer.</p>
+							</div>
+						</div>
+					</div>
+					<div class="col mb-4">
+						<div class="card">
+							<img src="./images/porsche.jpg" class="card-img-top" alt="...">
+							<div class="card-body">
+								<h5 class="card-title">Garage</h5>
+								<p class="card-text">This is a longer card with supporting text below as a natural lead-in
+									to additional content.</p>
+							</div>
+						</div>
+					</div>
+					<div class="col mb-4">
+						<div class="card">
+							<img src="./images/porsche.jpg" class="card-img-top" alt="...">
+							<div class="card-body">
+								<h5 class="card-title">Buy & Sell</h5>
+								<p class="card-text">This is a longer card with supporting text below as a natural lead-in
+									to additional content. This content is a little bit longer.</p>
+							</div>
+						</div>
+					</div> -->
+
+
+
+			</div>
+
+		</div>
+	</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<section class="ftco-section ftco-project bg-light" data-section="ourworks">
+		<div class="container-fluid px-md-5">
+			<div class="row justify-content-center pb-5">
+				<div class="col-md-12 heading-section text-center ftco-animate">
+					<span class="subheading">Accomplishments</span>
+					<h2 class="mb-4">Our Works</h2>
+					<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12 testimonial">
+					<div class="carousel-project owl-carousel">
+						<div class="item">
+							<div class="project">
+								<div class="img">
+									<img src="images/project-1.jpg" class="img-fluid" alt="Colorlib Template">
+									<a href="images/project-1.jpg"
+										class="icon image-popup d-flex justify-content-center align-items-center">
+										<span class="icon-expand"></span>
+									</a>
+								</div>
+								<div class="text px-4">
+									<h3><a href="#">Office Interior Design</a></h3>
+									<span>Interior Design</span>
+								</div>
+							</div>
+						</div>
+						<div class="item">
+							<div class="project">
+								<div class="img">
+									<img src="images/project-2.jpg" class="img-fluid" alt="Colorlib Template">
+									<a href="images/project-2.jpg"
+										class="icon image-popup d-flex justify-content-center align-items-center">
+										<span class="icon-expand"></span>
+									</a>
+								</div>
+								<div class="text px-4">
+									<h3><a href="#">Office Interior Design</a></h3>
+									<span>Interior Design</span>
+								</div>
+							</div>
+						</div>
+						<div class="item">
+							<div class="project">
+								<div class="img">
+									<img src="images/project-3.jpg" class="img-fluid" alt="Colorlib Template">
+									<a href="images/project-3.jpg"
+										class="icon image-popup d-flex justify-content-center align-items-center">
+										<span class="icon-expand"></span>
+									</a>
+								</div>
+								<div class="text px-4">
+									<h3><a href="#">Office Interior Design</a></h3>
+									<span>Interior Design</span>
+								</div>
+							</div>
+						</div>
+						<div class="item">
+							<div class="project">
+								<div class="img">
+									<img src="images/project-4.jpg" class="img-fluid" alt="Colorlib Template">
+									<a href="images/project-4.jpg"
+										class="icon image-popup d-flex justify-content-center align-items-center">
+										<span class="icon-expand"></span>
+									</a>
+								</div>
+								<div class="text px-4">
+									<h3><a href="#">Office Interior Design</a></h3>
+									<span>Interior Design</span>
+								</div>
+							</div>
+						</div>
+						<div class="item">
+							<div class="project">
+								<div class="img">
+									<img src="images/project-5.jpg" class="img-fluid" alt="Colorlib Template">
+									<a href="images/project-5.jpg"
+										class="icon image-popup d-flex justify-content-center align-items-center">
+										<span class="icon-expand"></span>
+									</a>
+								</div>
+								<div class="text px-4">
+									<h3><a href="#">Office Interior Design</a></h3>
+									<span>Interior Design</span>
+								</div>
+							</div>
+						</div>
+						<div class="item">
+							<div class="project">
+								<div class="img">
+									<img src="images/project-6.jpg" class="img-fluid" alt="Colorlib Template">
+									<a href="images/project-6.jpg"
+										class="icon image-popup d-flex justify-content-center align-items-center">
+										<span class="icon-expand"></span>
+									</a>
+								</div>
+								<div class="text px-4">
+									<h3><a href="#">Office Interior Design</a></h3>
+									<span>Interior Design</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+
+
+
+
+
+	<!-- <section class="ftco-section" data-section="team">
+    	<div class="container-fluid p-0">
+    		<div class="row no-gutters justify-content-center pb-5">
+          <div class="col-md-12 heading-section text-center ftco-animate">
+          	<span class="subheading">Architect</span>
+            <h2 class="mb-4">Behind those Beautiful Works</h2>
+            <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia</p>
+          </div>
+        </div>
+        <div class="row no-gutters">
+					<div class="col-md-6 col-lg-3 ftco-animate">
+						<div class="staff">
+							<div class="img-wrap d-flex align-items-stretch">
+								<div class="img align-self-stretch" style="background-image: url(images/team-1.jpg);"></div>
+							</div>
+							<div class="text d-flex align-items-center pt-3 text-center">
+								<div>
+									<span class="position mb-2">Architect</span>
+									<h3 class="mb-4">Lloyd Wilson</h3>
+									<div class="faded">
+										<p>I am an ambitious workaholic, but apart from that, pretty simple person.</p>
+										<ul class="ftco-social text-center">
+			                <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
+			                <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
+			                <li class="ftco-animate"><a href="#"><span class="icon-google-plus"></span></a></li>
+			                <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
+			              </ul>
+		              </div>
+		            </div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6 col-lg-3 ftco-animate">
+						<div class="staff">
+							<div class="img-wrap d-flex align-items-stretch">
+								<div class="img align-self-stretch" style="background-image: url(images/team-2.jpg);"></div>
+							</div>
+							<div class="text d-flex align-items-center pt-3 text-center">
+								<div>
+									<span class="position mb-2">Architect</span>
+									<h3 class="mb-4">Rachel Parker</h3>
+									<div class="faded">
+										<p>I am an ambitious workaholic, but apart from that, pretty simple person.</p>
+										<ul class="ftco-social text-center">
+			                <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
+			                <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
+			                <li class="ftco-animate"><a href="#"><span class="icon-google-plus"></span></a></li>
+			                <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
+			              </ul>
+		              </div>
+		            </div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6 col-lg-3 ftco-animate">
+						<div class="staff">
+							<div class="img-wrap d-flex align-items-stretch">
+								<div class="img align-self-stretch" style="background-image: url(images/team-3.jpg);"></div>
+							</div>
+							<div class="text d-flex align-items-center pt-3 text-center">
+								<div>
+									<span class="position mb-2">Architect</span>
+									<h3 class="mb-4">Ian Smith</h3>
+									<div class="faded">
+										<p>I am an ambitious workaholic, but apart from that, pretty simple person.</p>
+										<ul class="ftco-social text-center">
+			                <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
+			                <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
+			                <li class="ftco-animate"><a href="#"><span class="icon-google-plus"></span></a></li>
+			                <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
+			              </ul>
+		              </div>
+		            </div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6 col-lg-3 ftco-animate">
+						<div class="staff">
+							<div class="img-wrap d-flex align-items-stretch">
+								<div class="img align-self-stretch" style="background-image: url(images/team-4.jpg);"></div>
+							</div>
+							<div class="text d-flex align-items-center pt-3 text-center">
+								<div>
+									<span class="position mb-2">Architect</span>
+									<h3 class="mb-4">Alicia Henderson</h3>
+									<div class="faded">
+										<p>I am an ambitious workaholic, but apart from that, pretty simple person.</p>
+										<ul class="ftco-social text-center">
+			                <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
+			                <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
+			                <li class="ftco-animate"><a href="#"><span class="icon-google-plus"></span></a></li>
+			                <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
+			              </ul>
+		              </div>
+		            </div>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-md-6 col-lg-3 ftco-animate">
+						<div class="staff">
+							<div class="img-wrap d-flex align-items-stretch">
+								<div class="img align-self-stretch" style="background-image: url(images/staff-1.jpg);"></div>
+							</div>
+							<div class="text d-flex align-items-center pt-3 text-center">
+								<div>
+									<span class="position mb-2">Architect</span>
+									<h3 class="mb-4">Lloyd Wilson</h3>
+									<div class="faded">
+										<p>I am an ambitious workaholic, but apart from that, pretty simple person.</p>
+										<ul class="ftco-social text-center">
+			                <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
+			                <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
+			                <li class="ftco-animate"><a href="#"><span class="icon-google-plus"></span></a></li>
+			                <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
+			              </ul>
+		              </div>
+		            </div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6 col-lg-3 ftco-animate">
+						<div class="staff">
+							<div class="img-wrap d-flex align-items-stretch">
+								<div class="img align-self-stretch" style="background-image: url(images/staff-2.jpg);"></div>
+							</div>
+							<div class="text d-flex align-items-center pt-3 text-center">
+								<div>
+									<span class="position mb-2">Architect</span>
+									<h3 class="mb-4">Rachel Parker</h3>
+									<div class="faded">
+										<p>I am an ambitious workaholic, but apart from that, pretty simple person.</p>
+										<ul class="ftco-social text-center">
+			                <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
+			                <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
+			                <li class="ftco-animate"><a href="#"><span class="icon-google-plus"></span></a></li>
+			                <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
+			              </ul>
+		              </div>
+		            </div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6 col-lg-3 ftco-animate">
+						<div class="staff">
+							<div class="img-wrap d-flex align-items-stretch">
+								<div class="img align-self-stretch" style="background-image: url(images/staff-3.jpg);"></div>
+							</div>
+							<div class="text d-flex align-items-center pt-3 text-center">
+								<div>
+									<span class="position mb-2">Architect</span>
+									<h3 class="mb-4">Ian Smith</h3>
+									<div class="faded">
+										<p>I am an ambitious workaholic, but apart from that, pretty simple person.</p>
+										<ul class="ftco-social text-center">
+			                <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
+			                <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
+			                <li class="ftco-animate"><a href="#"><span class="icon-google-plus"></span></a></li>
+			                <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
+			              </ul>
+		              </div>
+		            </div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6 col-lg-3 ftco-animate">
+						<div class="staff">
+							<div class="img-wrap d-flex align-items-stretch">
+								<div class="img align-self-stretch" style="background-image: url(images/staff-4.jpg);"></div>
+							</div>
+							<div class="text d-flex align-items-center pt-3 text-center">
+								<div>
+									<span class="position mb-2">Architect</span>
+									<h3 class="mb-4">Alicia Henderson</h3>
+									<div class="faded">
+										<p>I am an ambitious workaholic, but apart from that, pretty simple person.</p>
+										<ul class="ftco-social text-center">
+			                <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
+			                <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
+			                <li class="ftco-animate"><a href="#"><span class="icon-google-plus"></span></a></li>
+			                <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
+			              </ul>
+		              </div>
+		            </div>
+							</div>
+						</div>
+					</div>
+				</div>
+    	</div>
+    </section>
+
+
+    <section class="testimony-section" data-section="testimony">
+      <div class="container">
+        <div class="row ftco-animate justify-content-center">
+        	<div class="col-md-12 d-flex align-items-center">
+        		<div class="carousel-testimony owl-carousel">
+	        		<div class="item">
+	        			<div class="testimony-wrap d-flex align-items-stretch">
+		              <div class="user-img d-flex align-self-stretch" style="background-image: url(images/testimony-1.jpg)">
+		              </div>
+		              <div class="text d-flex align-items-center">
+		              	<div>
+			              	<div class="icon-quote">
+			              		<span class="icon-quote-left"></span>
+			              	</div>
+			                <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
+			                <p class="name">Jacob Bolton</p>
+			                <span class="position">CEO, Founder</span>
+		                </div>
+		              </div>
+		            </div>
+	        		</div>
+	        		<div class="item">
+	        			<div class="testimony-wrap d-flex align-items-stretch">
+		              <div class="user-img d-flex align-self-stretch" style="background-image: url(images/testimony-2.jpg)">
+		              </div>
+		              <div class="text d-flex align-items-center">
+		              	<div>
+			              	<div class="icon-quote">
+			              		<span class="icon-quote-left"></span>
+			              	</div>
+			                <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
+			                <p class="name">Jacob Bolton</p>
+			                <span class="position">CEO, Founder</span>
+		                </div>
+		              </div>
+		            </div>
+	        		</div>
+	        	</div>
+        	</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ftco-section bg-light" data-section="blog">
+      <div class="container">
+        <div class="row justify-content-center mb-5 pb-5">
+          <div class="col-md-7 heading-section text-center ftco-animate">
+            <span class="subheading">Blog</span>
+            <h2 class="mb-4">Read Our Stories</h2>
+            <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia</p>
+          </div>
+        </div>
+        <div class="row d-flex">
+          <div class="col-md-4 d-flex ftco-animate">
+          	<div class="blog-entry justify-content-end">
+              <a href="single.html" class="block-20" style="background-image: url('images/image_1.jpg');">
+              </a>
+              <div class="text mt-3 float-right d-block">
+              	<div class="d-flex align-items-center pt-2 mb-4 topp">
+              		<div class="one mr-3">
+              			<span class="day">12</span>
+              		</div>
+              		<div class="two">
+              			<span class="yr">2019</span>
+              			<span class="mos">March</span>
+              		</div>
+              	</div>
+                <h3 class="heading"><a href="single.html">Why Lead Generation is Key for Business Growth</a></h3>
+                <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
+                <div class="d-flex align-items-center mt-4 meta">
+	                <p class="mb-0"><a href="#" class="btn btn-secondary">Read More <span class="ion-ios-arrow-round-forward"></span></a></p>
+	                <p class="ml-auto mb-0">
+	                	<a href="#" class="mr-2">Admin</a>
+	                	<a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a>
+	                </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 d-flex ftco-animate">
+          	<div class="blog-entry justify-content-end">
+              <a href="single.html" class="block-20" style="background-image: url('images/image_2.jpg');">
+              </a>
+              <div class="text mt-3 float-right d-block">
+              	<div class="d-flex align-items-center pt-2 mb-4 topp">
+              		<div class="one mr-3">
+              			<span class="day">10</span>
+              		</div>
+              		<div class="two">
+              			<span class="yr">2019</span>
+              			<span class="mos">March</span>
+              		</div>
+              	</div>
+                <h3 class="heading"><a href="single.html">Why Lead Generation is Key for Business Growth</a></h3>
+                <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
+                <div class="d-flex align-items-center mt-4 meta">
+	                <p class="mb-0"><a href="#" class="btn btn-secondary">Read More <span class="ion-ios-arrow-round-forward"></span></a></p>
+	                <p class="ml-auto mb-0">
+	                	<a href="#" class="mr-2">Admin</a>
+	                	<a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a>
+	                </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 d-flex ftco-animate">
+          	<div class="blog-entry">
+              <a href="single.html" class="block-20" style="background-image: url('images/image_3.jpg');">
+              </a>
+              <div class="text mt-3 float-right d-block">
+              	<div class="d-flex align-items-center pt-2 mb-4 topp">
+              		<div class="one mr-3">
+              			<span class="day">05</span>
+              		</div>
+              		<div class="two">
+              			<span class="yr">2019</span>
+              			<span class="mos">March</span>
+              		</div>
+              	</div>
+                <h3 class="heading"><a href="single.html">Why Lead Generation is Key for Business Growth</a></h3>
+                <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
+                <div class="d-flex align-items-center mt-4 meta">
+	                <p class="mb-0"><a href="#" class="btn btn-secondary">Read More <span class="ion-ios-arrow-round-forward"></span></a></p>
+	                <p class="ml-auto mb-0">
+	                	<a href="#" class="mr-2">Admin</a>
+	                	<a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a>
+	                </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4 d-flex ftco-animate">
+          	<div class="blog-entry justify-content-end">
+              <a href="single.html" class="block-20" style="background-image: url('images/image_4.jpg');">
+              </a>
+              <div class="text mt-3 float-right d-block">
+              	<div class="d-flex align-items-center pt-2 mb-4 topp">
+              		<div class="one mr-3">
+              			<span class="day">12</span>
+              		</div>
+              		<div class="two">
+              			<span class="yr">2019</span>
+              			<span class="mos">March</span>
+              		</div>
+              	</div>
+                <h3 class="heading"><a href="single.html">Why Lead Generation is Key for Business Growth</a></h3>
+                <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
+                <div class="d-flex align-items-center mt-4 meta">
+	                <p class="mb-0"><a href="#" class="btn btn-secondary">Read More <span class="ion-ios-arrow-round-forward"></span></a></p>
+	                <p class="ml-auto mb-0">
+	                	<a href="#" class="mr-2">Admin</a>
+	                	<a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a>
+	                </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 d-flex ftco-animate">
+          	<div class="blog-entry justify-content-end">
+              <a href="single.html" class="block-20" style="background-image: url('images/image_5.jpg');">
+              </a>
+              <div class="text mt-3 float-right d-block">
+              	<div class="d-flex align-items-center pt-2 mb-4 topp">
+              		<div class="one mr-3">
+              			<span class="day">10</span>
+              		</div>
+              		<div class="two">
+              			<span class="yr">2019</span>
+              			<span class="mos">March</span>
+              		</div>
+              	</div>
+                <h3 class="heading"><a href="single.html">Why Lead Generation is Key for Business Growth</a></h3>
+                <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
+                <div class="d-flex align-items-center mt-4 meta">
+	                <p class="mb-0"><a href="#" class="btn btn-secondary">Read More <span class="ion-ios-arrow-round-forward"></span></a></p>
+	                <p class="ml-auto mb-0">
+	                	<a href="#" class="mr-2">Admin</a>
+	                	<a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a>
+	                </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 d-flex ftco-animate">
+          	<div class="blog-entry">
+              <a href="single.html" class="block-20" style="background-image: url('images/image_6.jpg');">
+              </a>
+              <div class="text mt-3 float-right d-block">
+              	<div class="d-flex align-items-center pt-2 mb-4 topp">
+              		<div class="one mr-3">
+              			<span class="day">05</span>
+              		</div>
+              		<div class="two">
+              			<span class="yr">2019</span>
+              			<span class="mos">March</span>
+              		</div>
+              	</div>
+                <h3 class="heading"><a href="single.html">Why Lead Generation is Key for Business Growth</a></h3>
+                <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
+                <div class="d-flex align-items-center mt-4 meta">
+	                <p class="mb-0"><a href="#" class="btn btn-secondary">Read More <span class="ion-ios-arrow-round-forward"></span></a></p>
+	                <p class="ml-auto mb-0">
+	                	<a href="#" class="mr-2">Admin</a>
+	                	<a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a>
+	                </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section> -->
+
+	<section class="ftco-section contact-section ftco-no-pb" data-section="contact">
+		<div class="container">
+			<div class="row justify-content-center mb-5 pb-3">
+				<div class="col-md-7 heading-section text-center ftco-animate">
+					<span class="subheading">Contact</span>
+					<h2 class="mb-4">Contact Us</h2>
+					<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia</p>
+				</div>
+			</div>
+			<div class="row no-gutters block-9s">
+				<div class="col-md-12">
+					<form action="#" class="bg-light p-5 contact-form">
+
+						<div class="form-group ftco-animate">
+							<input type="text" class="form-control" placeholder="Your Email">
+						</div>
+
+
+						<div class="form-group text-center">
+							<input type="submit" value="Subscribe"
+								class="btn btn-outline-success py-3 px-5 ftco-animate">
+						</div>
+					</form>
+
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="ftco-section contact-section">
+		<div class="container">
+			<div class="row d-flex contact-info">
+				<div class="col-6 col-md-3  d-flex">
+					<div class="align-self-stretch box p-4 text-center">
+						<div class="icon d-flex align-items-center justify-content-center">
+							<span class="icon-map-signs"></span>
+						</div>
+						<h3 class="mb-4">Address</h3>
+						<p>House #16, Road #6, Nikunjo #2, Dhaka-1229.</p>
+					</div>
+				</div>
+				<div class="col-6 col-md-3  d-flex">
+					<div class="align-self-stretch box p-4 text-center">
+						<div class="icon d-flex align-items-center justify-content-center">
+							<span class="icon-phone2"></span>
+						</div>
+						<h3 class="mb-4">Contact Number</h3>
+						<p><a href="tel://+8801761023083">+ 880 1761 023083</a></p>
+					</div>
+				</div>
+				<div class="col-6 col-md-3  d-flex">
+					<div class="align-self-stretch box p-4 text-center">
+						<div class="icon d-flex align-items-center justify-content-center">
+							<span class="icon-paper-plane"></span>
+						</div>
+						<h3 class="mb-4">Email Address</h3>
+						<p><a href="mailto:info@mastodonbd.com">info@mastodonbd.com</a></p>
+					</div>
+				</div>
+				<div class="col-6 col-md-3  d-flex">
+					<div class="align-self-stretch box p-4 text-center">
+						<div class="icon d-flex align-items-center justify-content-center">
+							<span class="icon-globe"></span>
+						</div>
+						<h3 class="mb-4">Website</h3>
+						<p><a href="www.mastodonbd.com">www.mastodonbd.com</a></p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+
+	<footer class="ftco-footer ftco-section">
+		<div class="container">
+			<div class="row mb-5">
+				<div class="col-md">
+					<div class="ftco-footer-widget mb-4">
+						<h2 class="ftco-heading-2">MASTODON LTD.</h2>
+						<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,
+							there live the blind texts.</p>
+						<ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
+							<li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
+							<li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
+							<li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
+						</ul>
+					</div>
+				</div>
+				<!-- <div class="col-md">
+					<div class="ftco-footer-widget mb-4 ml-md-4">
+						<h2 class="ftco-heading-2">Links</h2>
+						<ul class="list-unstyled">
+							<li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Home</a></li>
+							<li><a href="#"><span class="icon-long-arrow-right mr-2"></span>About</a></li>
+							<li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Services</a></li>
+							<li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Projects</a></li>
+							<li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Contact</a></li>
+						</ul>
+					</div>
+				</div> -->
+				
+				<div class="col-md">
+					<div class="ftco-footer-widget mb-4">
+						<h2 class="ftco-heading-2">Services</h2>
+						<ul class="list-unstyled">
+							<li><a href="#"><span class="icon-long-arrow-right mr-2"></span>MASTODON WASH</a></li>
+							<li><a href="#"><span class="icon-long-arrow-right mr-2"></span>MASTA MART</a></li>
+							<li><a href="#"><span class="icon-long-arrow-right mr-2"></span>MASTODON GARAGE</a></li>
+							<li><a href="#"><span class="icon-long-arrow-right mr-2"></span>BUY & SELL</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-md">
+					<div class="ftco-footer-widget mb-4">
+						<h2 class="ftco-heading-2">Have a Questions?</h2>
+						<div class="block-23 mb-3">
+							<ul>
+								<li><span class="icon icon-map-marker"></span><span class="text">House #16, Road #6,
+										Nikunjo #2, Dhaka-1229.</span></li>
+								<li><a href="tel://+8801761023083"><span class="icon icon-phone"></span><span class="text">+ 880 1761 023083
+										</span></a></li>
+								<li><a href="mailto:info@mastodonbd.com"><span class="icon icon-envelope"></span><span
+											class="text">info@mastodonbd.com</span></a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12 text-center">
+
+					<p>
+						
+						Copyright &copy;
+						<script>document.write(new Date().getFullYear());</script> <br> All rights reserved by
+						MastodonBD.
+					</p>
+				</div>
+			</div>
+		</div>
+	</footer>
+
+
+
+	<!-- loader -->
+	<div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px">
+			<circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" />
+			<circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10"
+				stroke="#F96D00" />
+		</svg></div>
+
+
+	<script>
+		//Get the button
+		var mybutton = document.getElementById("scrollBtn");
+
+		// When the user scrolls down 20px from the top of the document, show the button
+		window.onscroll = function () { scrollFunction() };
+
+		function scrollFunction() {
+			if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+				mybutton.style.display = "block";
+			} else {
+				mybutton.style.display = "none";
+			}
+		}
+
+		// When the user clicks on the button, scroll to the top of the document
+		function topFunction() {
+			document.body.scrollTop = 0;
+			document.documentElement.scrollTop = 0;
+		}
+	</script>
+
+
+	<script src="js/jquery.min.js"></script>
+	<script src="js/jquery-migrate-3.0.1.min.js"></script>
+	<script src="js/popper.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/jquery.easing.1.3.js"></script>
+	<script src="js/jquery.waypoints.min.js"></script>
+	<script src="js/jquery.stellar.min.js"></script>
+	<script src="js/owl.carousel.min.js"></script>
+	<script src="js/jquery.magnific-popup.min.js"></script>
+	<script src="js/aos.js"></script>
+	<script src="js/jquery.animateNumber.min.js"></script>
+	<script src="js/scrollax.min.js"></script>
+	<script
+		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+	<script src="js/google-map.js"></script>
+	<script src="js/main.js"></script>
+
+	<script src="fonts/fontawesome-free-5.9.0-web/js/all.js"></script>
+
+	<script src="https://code.jquery.com/jquery-3.2.1.js"
+		integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
+	<script src="./js/jquery.event.move.js"></script>
+	<script src="./js/jquery.twentytwenty.js"></script>
+	<script>
+		$(function () {
+			$(".twentytwenty-container[data-orientation!='vertical']").twentytwenty({ default_offset_pct: 0.7 });
+			$(".twentytwenty-container[data-orientation='vertical']").twentytwenty({ default_offset_pct: 0.3, orientation: 'vertical' });
+		});
+	</script>
+	<script>
+		$('.preloader').delay(3500).fadeOut('slow');
+		setTimeout(function() {
+		//After 4s, the no-scroll class of the body will be removed
+		$('body').removeClass('no-scroll');
+		}, 3500); //Here you can change preloader time
+	</script>
+
+	<script src="https://apps.elfsight.com/p/platform.js" defer></script>
+	<div class="elfsight-app-a9e7180a-97f8-44d8-8c5f-e7e0c6706528"></div>
+
+</body>
+
+</html>
